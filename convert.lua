@@ -56,7 +56,7 @@ end
 SaveToHtml = function (inner)
     local converted = "<!DOCTYPE html>" .. ConvertToHtml(inner) .. "\n"
     lfs.mkdir(save_dir)
-    local full_path = save_dir .. "/" .. save_path .. "/index.html"
+    local full_path = save_dir .. "/" .. save_path .. ".html"
     local save_file = io.open(full_path, "w")
     print("Writing to", full_path, save_file)
     io.output(save_file)
@@ -83,13 +83,8 @@ typ = function (str)
     written_svg:close()
     typst_svg_index = typst_svg_index + 1
     return {
-        -- class = "typst-svg",
         svg_content
     }
-    -- return img {
-    --     class = "typst-svg",
-    --     src = TYPST_SAVE_PREFIX .. typst_svg_index .. ".svg"
-    -- }
 end
 
 local function split_preserve_dollar(s)
