@@ -1,4 +1,4 @@
-<!DOCTYPE html><html><head><meta charset="utf-8"></meta><link rel="preconnect" href="https://fonts.googleapis.com"></link><link rel="preconnect" href="https://fonts.gstatic.com"></link><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&display=swap"></link><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Source+Sans+3:ital,wght@0,200..900;1,200..900&display=swap"></link><style>@font-face {
+<!DOCTYPE html><html><head><meta charset="utf-8"></meta><meta content="width=device-width, initial-scale=1" name="viewport"></meta><link href="https://fonts.googleapis.com" rel="preconnect"></link><link href="https://fonts.gstatic.com" rel="preconnect"></link><link href="https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&display=swap" rel="stylesheet"></link><link href="https://fonts.googleapis.com/css2?family=Source+Sans+3:ital,wght@0,200..900;1,200..900&display=swap" rel="stylesheet"></link><style>@font-face {
   font-family: "Lete Sans Math";
   src: url("./fonts/LeteSansMath.otf");
 }
@@ -18,17 +18,6 @@
     aspect-ratio: 1 / 1;
     object-fit: cover;
     display: block;
-}
-@media (max-width: 700px) {
-  #wrapper {
-    grid-template-columns: 1fr;
-  }
-  #main-content {
-      padding-right: 0vw;
-  }
-  .sidebar {
-    display: none;
-  }
 }
 math {
   font-family: "Lete Sans Math";
@@ -71,6 +60,9 @@ a, a:visited {
   padding: 0.4em;
 }
 #navbar {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
     margin-bottom: 15px;
 }
 #main-content {
@@ -88,7 +80,32 @@ ul {
 math[display="inline"] {
   padding: 0em 0.2em;
 }
-</style></head><body><div id="wrapper"><div id="main-content"><h1>Ambareesh Shyam Sundar</h1><div style="display:flex;gap:10px"><a href="mailto:ambareesh@gatech.edu">Email</a>&middot;<a href="https://github.com/ambareesh1510">Github</a>&middot;<a href="https://linkedin.com/in/ambareesh-shyam-sundar">LinkedIn</a>&middot;<a href="resume.pdf">Resume</a>&middot;<span id="theme-toggle">Switch theme</span><script>                        const root = document.documentElement;
+@media (max-width: 700px) {
+  :root {
+    padding: 20px;
+    font-size: 20px;
+  }
+  #wrapper {
+    grid-template-columns: minmax(0, 1fr);
+  }
+  #main-content {
+    padding-right: 0;
+  }
+  #main-content > h1 {
+    font-size: 2rem;
+    line-height: 1.1;
+    text-align: center;
+  }
+  #navbar {
+    justify-content: center;
+    margin-top: 0.6em;
+    text-align: center;
+  }
+  .sidebar {
+    display: none;
+  }
+}
+</style></head><body><div id="wrapper"><div id="main-content"><h1>Ambareesh Shyam Sundar</h1><div id="navbar"><a href="mailto:ambareesh@gatech.edu">Email</a>&middot;<a href="https://github.com/ambareesh1510">Github</a>&middot;<a href="https://linkedin.com/in/ambareesh-shyam-sundar">LinkedIn</a>&middot;<a href="resume.pdf">Resume</a>&middot;<span id="theme-toggle">Switch theme</span><script>                        const root = document.documentElement;
                         const toggle = document.querySelector("#theme-toggle");
                         const systemTheme = window.matchMedia("(prefers-color-scheme: dark)");
 
@@ -107,12 +124,13 @@ math[display="inline"] {
                         });
 
                         updateThemeLabel();
-                        </script></div><p>                    I am a fourth-year undergraduate student at Georgia Tech studying Computer Science and Mathematics.
+                        </script></div><div><p>                    I am a fourth-year undergraduate student at Georgia Tech studying Computer Science and Mathematics.
                     I am broadly interested in designing high-performance computing systems, especially from the perspective of hardware-software codesign.
                     I am also interested in applications of these systems to scientific computing, machine learning, and robotics.
-                    Currently, I am a teaching assistant for Georgia Tech's CS 4803/6222: Systems for Machine Learning.
-                    </p><p><p>                    In summer 2026, I was a Data Security Intern at 1Password, where I worked on refactoring and improving the open-source Rust library <a href="https://github.com/1Password/passkey-rs">passkey-rs</a>.
-                    In summer 2024, I worked as a Software Engineering Intern at the Georgia Tech Open Source Program Office and collaborated with mentors from IBM to contribute to <a href="https://github.com/pytorch/pytorch">PyTorch</a>.</p></p><p><p>                    From 2024 to 2026, I worked as a student researcher at the <a href="https://hannahchoi.math.gatech.edu/">Georgia Tech Mathematical Neuroscience Lab</a>, where I helped design and implement computationally efficient machine learning models for computer vision using insights from animal biology.</p></p><h2>Writing</h2><ul><div class="bullet"><li>"Above and Below: Matroids and Generalizations via Greedy Algorithms", expository paper (2025). <a href="Above_and_Below_Matroids_and_Generalizations_via_Greedy_Algorithms.pdf">[pdf] </a></li></div><div class="bullet"><li>"Gröbner Bases", expository paper (2025). <a href="Grobner_Bases.pdf">[pdf] </a></li></div><div class="bullet"><li>"Sphere Packing and the Geometry of Numbers", expository paper (2025). <a href="Sphere_Packing_and_the_Geometry_of_Numbers.pdf">[pdf] </a></li></div><div class="bullet"><li>"A Self-Contained Introduction to Khovanov Homology", expository paper (2025). <a href="A_Self_Contained_Introduction_to_Khovanov_Homology.pdf">[pdf] </a></li></div></ul><h2>Projects</h2><ul><div class="bullet"><li><span><strong>Foxtail, </strong>a Unix-like 32-bit x86 operating system written in C. </span><a href="https://github.com/ambareesh1510/foxtail">[Github] </a></li></div><div class="bullet"><li><span><strong>How the Turntables, </strong>an original rhythm game that won 12th place in the <a href="https://itch.io/jam/theveryseriousjuniperdevgamejam">Juniper Dev Game Jam</a>. </span><a href="https://dsfhdshdjtsb.itch.io/howtheturntables">[Itch] </a></li></div><div class="bullet"><li><span><strong>Open Aim Trainer, </strong>a lightweight open source FPS aim trainer with scriptable and customizable scenarios. </span><a href="https://github.com/ambareesh1510/openaimtrainer-frontend">[Github] </a></li></div><div class="bullet"><li><span><strong>Dungeon Deja Vu, </strong>a platformer created for the Bevy Jam 5 with a unique cyclic twist. </span><a href="https://github.com/ambareesh1510/dungeon-deja-vu">[Github] </a><a href="https://dsfhdshdjtsb.itch.io/dungeon-deja-vu">[Itch] </a></li></div><div class="bullet"><li><span><strong>Coda, </strong>a scripting language for music synthesis. </span><a href="https://github.com/ambareesh1510/coda">[Github] </a></li></div><div class="bullet"><li><span><strong>Chaotic Hash Functions, </strong>benchmarking the effectiveness of hash functions implemented using chaotic discrete maps. </span><a href="https://github.com/ambareesh1510/chaotic-hash-functions">[Github] </a></li></div></ul><hr></hr><p>                <strong>Webrings:</strong>
+                    Currently, I am a teaching assistant for Georgia Tech's CS 4803/6222: Systems for Machine Learning.</p>
+<p>                    In summer 2026, I was a Data Security Intern at 1Password, where I worked on refactoring and improving the open-source Rust library <a href="https://github.com/1Password/passkey-rs">passkey-rs</a>.
+                    In summer 2024, I worked as a Software Engineering Intern at the Georgia Tech Open Source Program Office and collaborated with mentors from IBM to contribute to <a href="https://github.com/pytorch/pytorch">PyTorch</a>.</p>
+<p>                    From 2024 to 2026, I worked as a student researcher at the <a href="https://hannahchoi.math.gatech.edu/">Georgia Tech Mathematical Neuroscience Lab</a>, where I helped design and implement computationally efficient machine learning models for computer vision using insights from animal biology.</p></div><h2>Writing</h2><ul><div class="bullet"><li>"Above and Below: Matroids and Generalizations via Greedy Algorithms", expository paper (2025). <a href="Above_and_Below_Matroids_and_Generalizations_via_Greedy_Algorithms.pdf">[pdf] </a></li></div><div class="bullet"><li>"Gröbner Bases", expository paper (2025). <a href="Grobner_Bases.pdf">[pdf] </a></li></div><div class="bullet"><li>"Sphere Packing and the Geometry of Numbers", expository paper (2025). <a href="Sphere_Packing_and_the_Geometry_of_Numbers.pdf">[pdf] </a></li></div><div class="bullet"><li>"A Self-Contained Introduction to Khovanov Homology", expository paper (2025). <a href="A_Self_Contained_Introduction_to_Khovanov_Homology.pdf">[pdf] </a></li></div></ul><h2>Projects</h2><ul><div class="bullet"><li><span><strong>Foxtail, </strong>a Unix-like 32-bit x86 operating system written in C. </span><a href="https://github.com/ambareesh1510/foxtail">[Github] </a></li></div><div class="bullet"><li><span><strong>How the Turntables, </strong>an original rhythm game that won 12th place in the <a href="https://itch.io/jam/theveryseriousjuniperdevgamejam">Juniper Dev Game Jam</a>. </span><a href="https://dsfhdshdjtsb.itch.io/howtheturntables">[Itch] </a></li></div><div class="bullet"><li><span><strong>Open Aim Trainer, </strong>a lightweight open source FPS aim trainer with scriptable and customizable scenarios. </span><a href="https://github.com/ambareesh1510/openaimtrainer-frontend">[Github] </a></li></div><div class="bullet"><li><span><strong>Dungeon Deja Vu, </strong>a platformer created for the Bevy Jam 5 with a unique cyclic twist. </span><a href="https://github.com/ambareesh1510/dungeon-deja-vu">[Github] </a><a href="https://dsfhdshdjtsb.itch.io/dungeon-deja-vu">[Itch] </a></li></div><div class="bullet"><li><span><strong>Coda, </strong>a scripting language for music synthesis. </span><a href="https://github.com/ambareesh1510/coda">[Github] </a></li></div><div class="bullet"><li><span><strong>Chaotic Hash Functions, </strong>benchmarking the effectiveness of hash functions implemented using chaotic discrete maps. </span><a href="https://github.com/ambareesh1510/chaotic-hash-functions">[Github] </a></li></div></ul><hr></hr><p>                <strong>Webrings:</strong>
                 <a href="https://kiyuri.ca/"><<</a>
                 1332 Webring
                 <a href="https://penguin-duck.github.io/">>></a></p></div><div class="sidebar"></div></div></body></html>

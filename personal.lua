@@ -24,17 +24,6 @@ local stylesheet = [[
     object-fit: cover;
     display: block;
 }
-@media (max-width: 700px) {
-  #wrapper {
-    grid-template-columns: 1fr;
-  }
-  #main-content {
-      padding-right: 0vw;
-  }
-  .sidebar {
-    display: none;
-  }
-}
 math {
   font-family: "Lete Sans Math";
 }
@@ -76,6 +65,9 @@ a, a:visited {
   padding: 0.4em;
 }
 #navbar {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
     margin-bottom: 15px;
 }
 #main-content {
@@ -92,6 +84,31 @@ ul {
 }
 math[display="inline"] {
   padding: 0em 0.2em;
+}
+@media (max-width: 700px) {
+  :root {
+    padding: 20px;
+    font-size: 20px;
+  }
+  #wrapper {
+    grid-template-columns: minmax(0, 1fr);
+  }
+  #main-content {
+    padding-right: 0;
+  }
+  #main-content > h1 {
+    font-size: 2rem;
+    line-height: 1.1;
+    text-align: center;
+  }
+  #navbar {
+    justify-content: center;
+    margin-top: 0.6em;
+    text-align: center;
+  }
+  .sidebar {
+    display: none;
+  }
 }
 ]]
 
@@ -185,6 +202,10 @@ end
 local document = Html {
     head {
         meta { charset = "utf-8" },
+        meta {
+            name = "viewport",
+            content = "width=device-width, initial-scale=1",
+        },
         font_import(),
         style {stylesheet},
     },
@@ -198,7 +219,7 @@ local document = Html {
                     "Ambareesh Shyam Sundar"
                 },
                 div {
-                    style = "display:flex;gap:10px",
+                    id = "navbar",
                     a {
                         "Email",
                         href="mailto:ambareesh@gatech.edu",
@@ -247,22 +268,16 @@ local document = Html {
                         ]]
                     },
                 },
-                p {
-                    [[
+                div {
+                    md[[
                     I am a fourth-year undergraduate student at Georgia Tech studying Computer Science and Mathematics.
                     I am broadly interested in designing high-performance computing systems, especially from the perspective of hardware-software codesign.
                     I am also interested in applications of these systems to scientific computing, machine learning, and robotics.
                     Currently, I am a teaching assistant for Georgia Tech's CS 4803/6222: Systems for Machine Learning.
-                    ]]
-                },
-                p {
-                    md[[
+                    
                     In summer 2026, I was a Data Security Intern at 1Password, where I worked on refactoring and improving the open-source Rust library [passkey-rs](https://github.com/1Password/passkey-rs).
                     In summer 2024, I worked as a Software Engineering Intern at the Georgia Tech Open Source Program Office and collaborated with mentors from IBM to contribute to [PyTorch](https://github.com/pytorch/pytorch).
-                    ]]
-                },
-                p {
-                    md[[
+
                     From 2024 to 2026, I worked as a student researcher at the [Georgia Tech Mathematical Neuroscience Lab](https://hannahchoi.math.gatech.edu/), where I helped design and implement computationally efficient machine learning models for computer vision using insights from animal biology.
                     ]]
                 },
