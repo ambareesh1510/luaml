@@ -10,7 +10,7 @@ local stylesheet = [[
 :root {
     color-scheme: light dark;
     padding: 20px 10vw;
-    font-family: "Lato", serif;
+    font-family: "Source Sans 3", serif;
     font-size: 20px;
 }
 #wrapper {
@@ -39,12 +39,16 @@ math {
   font-family: "Lete Sans Math";
 }
 h1 {
-    margin: 0.2em 0em;
+    margin: 0.0em 0em;
 }
 h2 {
     font-size: 32px;
     margin-top: 0.4em;
-    margin-bottom: 0.3em;
+    margin-bottom: 0.1em;
+}
+h3 {
+    margin-top: 0.4em;
+    margin-bottom: 0.1em;
 }
 p {
     line-height: 1.5em;
@@ -104,6 +108,10 @@ local font_import = function()
       },
       link {
           href = "https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&display=swap",
+          rel="stylesheet"
+      },
+      link {
+          href = "https://fonts.googleapis.com/css2?family=Source+Sans+3:ital,wght@0,200..900;1,200..900&display=swap",
           rel="stylesheet"
       },
     }
@@ -361,6 +369,13 @@ local document = Html {
                     "Nov 2023"
                   ),
                 },
+                hr {},
+                md[[
+                **Webrings:**
+                [<<](https://kiyuri.ca/)
+                1332 Webring
+                [>>](https://penguin-duck.github.io/)
+                ]],
             },
             div {
                 class = "sidebar",
