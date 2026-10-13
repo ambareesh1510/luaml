@@ -1,4 +1,4 @@
-<!DOCTYPE html><html><head><meta charset="utf-8"></meta><meta content="width=device-width, initial-scale=1" name="viewport"></meta><link href="https://fonts.googleapis.com" rel="preconnect"></link><link href="https://fonts.gstatic.com" rel="preconnect"></link><link href="https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&display=swap" rel="stylesheet"></link><link href="https://fonts.googleapis.com/css2?family=Source+Sans+3:ital,wght@0,200..900;1,200..900&display=swap" rel="stylesheet"></link><style>@font-face {
+<!DOCTYPE html><html><head><meta charset="utf-8"></meta><meta name="viewport" content="width=device-width, initial-scale=1"></meta><link rel="preconnect" href="https://fonts.googleapis.com"></link><link rel="preconnect" href="https://fonts.gstatic.com"></link><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&display=swap"></link><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Source+Sans+3:ital,wght@0,200..900;1,200..900&display=swap"></link><style>@font-face {
   font-family: "Lete Sans Math";
   src: url("./fonts/LeteSansMath.otf");
 }
@@ -62,8 +62,14 @@ a, a:visited {
 #navbar {
     display: flex;
     flex-wrap: wrap;
-    gap: 10px;
+    gap: 8px 24px;
     margin-bottom: 15px;
+    position: relative;
+}
+#navbar .separator {
+    position: absolute;
+    visibility: hidden;
+    transform: translate(-50%, -50%);
 }
 #main-content {
     padding-right: 5vw;
@@ -105,9 +111,29 @@ math[display="inline"] {
     display: none;
   }
 }
-</style></head><body><div id="wrapper"><div id="main-content"><h1>Ambareesh Shyam Sundar</h1><div id="navbar"><a href="mailto:ambareesh@gatech.edu">Email</a>&middot;<a href="https://github.com/ambareesh1510">Github</a>&middot;<a href="https://linkedin.com/in/ambareesh-shyam-sundar">LinkedIn</a>&middot;<a href="resume.pdf">Resume</a>&middot;<span id="theme-toggle">Switch theme</span><script>                        const root = document.documentElement;
+</style></head><body><div id="wrapper"><div id="main-content"><h1>Ambareesh Shyam Sundar</h1><div id="navbar"><a href="mailto:ambareesh@gatech.edu">Email</a><span class="separator">&middot;</span><a href="https://github.com/ambareesh1510">Github</a><span class="separator">&middot;</span><a href="https://linkedin.com/in/ambareesh-shyam-sundar">LinkedIn</a><span class="separator">&middot;</span><a href="resume.pdf">Resume</a><span class="separator">&middot;</span><span id="theme-toggle">Switch theme</span><script>                        const root = document.documentElement;
                         const toggle = document.querySelector("#theme-toggle");
+                        const navbar = document.querySelector("#navbar");
+                        const separators = navbar.querySelectorAll(".separator");
                         const systemTheme = window.matchMedia("(prefers-color-scheme: dark)");
+
+                        function updateSeparators() {
+                            separators.forEach((separator) => {
+                                const previous = separator.previousElementSibling;
+                                const next = separator.nextElementSibling;
+                                const sameRow = previous.offsetTop === next.offsetTop;
+
+                                separator.style.visibility = sameRow ? "visible" : "hidden";
+                                if (sameRow) {
+                                    separator.style.left = `${
+                                        (previous.offsetLeft + previous.offsetWidth + next.offsetLeft) / 2
+                                    }px`;
+                                    separator.style.top = `${
+                                        previous.offsetTop + previous.offsetHeight / 2
+                                    }px`;
+                                }
+                            });
+                        }
 
                         function updateThemeLabel() {
                             const isDark = document.documentElement.style.colorScheme
@@ -115,6 +141,7 @@ math[display="inline"] {
                                 : systemTheme.matches;
 
                             toggle.textContent = isDark ? "Light mode" : "Dark mode";
+                            updateSeparators();
                         }
 
                         toggle.addEventListener("click", () => {
@@ -124,6 +151,8 @@ math[display="inline"] {
                         });
 
                         updateThemeLabel();
+                        window.addEventListener("resize", updateSeparators);
+                        document.fonts?.ready.then(updateSeparators);
                         </script></div><div><p>                    I am a fourth-year undergraduate student at Georgia Tech studying Computer Science and Mathematics.
                     I am broadly interested in designing high-performance computing systems, especially from the perspective of hardware-software codesign.
                     I am also interested in applications of these systems to scientific computing, machine learning, and robotics.

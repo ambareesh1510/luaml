@@ -67,8 +67,14 @@ a, a:visited {
 #navbar {
     display: flex;
     flex-wrap: wrap;
-    gap: 10px;
+    gap: 8px 24px;
     margin-bottom: 15px;
+    position: relative;
+}
+#navbar .separator {
+    position: absolute;
+    visibility: hidden;
+    transform: translate(-50%, -50%);
 }
 #main-content {
     padding-right: 5vw;
@@ -224,22 +230,22 @@ local document = Html {
                         "Email",
                         href="mailto:ambareesh@gatech.edu",
                     },
-                    "&middot;",
+                    span { class = "separator", "&middot;" },
                     a {
                         "Github",
                         href="https://github.com/ambareesh1510",
                     },
-                    "&middot;",
+                    span { class = "separator", "&middot;" },
                     a {
                         "LinkedIn",
                         href="https://linkedin.com/in/ambareesh-shyam-sundar",
                     },
-                    "&middot;",
+                    span { class = "separator", "&middot;" },
                     a {
                         "Resume",
                         href="resume.pdf",
                     },
-                    "&middot;",
+                    span { class = "separator", "&middot;" },
                     span {
                         "Switch theme",
                         id = "theme-toggle",
@@ -248,7 +254,27 @@ local document = Html {
                         [[
                         const root = document.documentElement;
                         const toggle = document.querySelector("#theme-toggle");
+                        const navbar = document.querySelector("#navbar");
+                        const separators = navbar.querySelectorAll(".separator");
                         const systemTheme = window.matchMedia("(prefers-color-scheme: dark)");
+
+                        function updateSeparators() {
+                            separators.forEach((separator) => {
+                                const previous = separator.previousElementSibling;
+                                const next = separator.nextElementSibling;
+                                const sameRow = previous.offsetTop === next.offsetTop;
+
+                                separator.style.visibility = sameRow ? "visible" : "hidden";
+                                if (sameRow) {
+                                    separator.style.left = `${
+                                        (previous.offsetLeft + previous.offsetWidth + next.offsetLeft) / 2
+                                    }px`;
+                                    separator.style.top = `${
+                                        previous.offsetTop + previous.offsetHeight / 2
+                                    }px`;
+                                }
+                            });
+                        }
 
                         function updateThemeLabel() {
                             const isDark = document.documentElement.style.colorScheme
@@ -256,6 +282,7 @@ local document = Html {
                                 : systemTheme.matches;
 
                             toggle.textContent = isDark ? "Light mode" : "Dark mode";
+                            updateSeparators();
                         }
 
                         toggle.addEventListener("click", () => {
@@ -265,6 +292,8 @@ local document = Html {
                         });
 
                         updateThemeLabel();
+                        window.addEventListener("resize", updateSeparators);
+                        document.fonts?.ready.then(updateSeparators);
                         ]]
                     },
                 },
